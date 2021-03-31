@@ -1,6 +1,6 @@
-package com.example.petscareapp;
+package com.example.petscareapp.models;
 
-public class PetOwner extends User{
+public class PetOwner extends User {
 
     String address;
     Pet myPet;

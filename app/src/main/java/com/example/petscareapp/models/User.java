@@ -1,4 +1,4 @@
-package com.example.petscareapp;
+package com.example.petscareapp.models;
 
 public class User {
     String name;
