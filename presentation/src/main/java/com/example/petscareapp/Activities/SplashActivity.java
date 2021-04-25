@@ -1,9 +1,11 @@
-package com.example.petscareapp;
+package com.example.petscareapp.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+
+import com.example.petscareapp.Activities.MainActivity;
 
 public class SplashActivity extends AppCompatActivity {
 
