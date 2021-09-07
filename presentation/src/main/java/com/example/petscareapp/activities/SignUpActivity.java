@@ -12,7 +12,8 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.petscareapp.R;
-import com.example.petscareapp.validator.BaseValidator;
+import com.example.petscareapp.validator.InputErrorHandler;
+import com.example.petscareapp.validator.InputValidator;
 
 
 public class SignUpActivity extends AppCompatActivity {
@@ -23,14 +24,16 @@ public class SignUpActivity extends AppCompatActivity {
     private EditText editTextEnterPassword;
     private EditText editTextConfirmPassword;
     private Button buttonSignUp;
-    private BaseValidator validator;
+    private InputValidator validator;
+    private InputErrorHandler toastMessage;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
-        validator = new BaseValidator();
+        validator = new InputValidator();
+        toastMessage = new InputErrorHandler();
 
         editTextFullName = findViewById(R.id.edit_text_enter_fullname);
         editTextUsername = findViewById(R.id.edit_text_enter_username);
@@ -83,12 +86,19 @@ public class SignUpActivity extends AppCompatActivity {
         boolean isPasswordValid = validator.validateEnteredPassword(enteredPassword);
         boolean isConfirmedPasswordValid = validator.validateEnteredAndConfirmedPassword(enteredPassword, enteredConfirmPassword);
 
-
         if (isEmailValid && isPasswordValid && isConfirmedPasswordValid) {
             startActivity(new Intent(getApplicationContext(), MainActivity.class));
+        } else if (!isEmailValid) {
+            String errorEmail = toastMessage.showEmailError(enteredEmail);
+            Toast.makeText(this, errorEmail, Toast.LENGTH_SHORT).show();
         } else {
-            String error = "An error occurred, please check email and/or password";
-            Toast.makeText(this, error, Toast.LENGTH_SHORT).show();
+            String errorPassword = toastMessage.showPasswordError(enteredPassword, enteredConfirmPassword);
+            Toast.makeText(this, errorPassword, Toast.LENGTH_SHORT).show();
         }
     }
+
 }
+
+
+
+

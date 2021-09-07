@@ -12,7 +12,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.petscareapp.R;
-import com.example.petscareapp.validator.BaseValidator;
+import com.example.petscareapp.validator.InputValidator;
 
 
 public class LoginActivity extends AppCompatActivity {
@@ -20,13 +20,13 @@ public class LoginActivity extends AppCompatActivity {
     private EditText editTextUserEmail;
     private EditText editTextUserPassword;
     private Button buttonLogin;
-    private BaseValidator validator;
+    private InputValidator validator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        validator = new BaseValidator();
+        validator = new InputValidator();
 
         editTextUserEmail = findViewById(R.id.edit_text_login_email);
         editTextUserPassword = findViewById(R.id.edit_text_login_password);
