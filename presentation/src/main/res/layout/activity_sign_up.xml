@@ -1,9 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:background="@color/white"
     android:orientation="vertical"
     android:padding="30dp"
@@ -54,9 +58,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:hint="@string/user_name_signup"
-            android:maxLength="15"
+            android:hint="@string/user_nick_name_signup"
             android:inputType="text"
+            android:maxLength="15"
             android:textSize="22sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -115,18 +119,19 @@
             android:textSize="22sp" />
     </com.google.android.material.textfield.TextInputLayout>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/select_type_of_user"
+        android:textColor="@color/dark_blue"
+        android:textSize="18sp" />
+
     <RadioGroup
+        android:id="@+id/radiobutton_group"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:orientation="vertical">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/select_type_of_user"
-            android:textColor="@color/dark_blue"
-            android:textSize="18sp" />
 
         <RadioButton
             android:layout_width="wrap_content"
@@ -142,14 +147,16 @@
     </RadioGroup>
 
     <Button
-        android:id="@+id/button_signup"
+        android:id="@+id/button_signUp"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_marginTop="15dp"
         android:background="@drawable/button_rounded"
+        android:enabled="false"
+        android:onClick="button_signUp"
         android:text="@string/sign_up_button"
         android:textColor="@color/white"
-        android:textSize="20sp"
-        android:enabled="false"
-        android:onClick="button_signUp"/>
-</LinearLayout>
+        android:textSize="20sp" />
+
+    </LinearLayout>
+</ScrollView>

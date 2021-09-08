@@ -29,7 +29,5 @@
         <item name="colorOnSecondary">@color/black</item>
     </style>
 
-    <style name="Theme.PetsCareApp.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-
     <style name="Theme.PetsCareApp.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

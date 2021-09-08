@@ -20,7 +20,7 @@
     <string name="signup_title">SignUp</string>
     <string name="fill_in_this_form">Please fill in this form to create an account!</string>
     <string name="full_name_signup">Full Name</string>
-    <string name="user_name_signup">User Name</string>
+    <string name="user_nick_name_signup">User Nickname</string>
     <string name="email_signup">Email</string>
     <string name="password_signup">Password</string>
     <string name="confirm_password_signup">Confirm Password</string>

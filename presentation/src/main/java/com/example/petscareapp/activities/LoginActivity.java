@@ -11,14 +11,17 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.data.UserDao;
+import com.example.data.UserDatabase;
+import com.example.data.UserEntity;
 import com.example.petscareapp.R;
 import com.example.petscareapp.validator.InputValidator;
 
 
 public class LoginActivity extends AppCompatActivity {
 
-    private EditText editTextUserEmail;
-    private EditText editTextUserPassword;
+    private EditText loginUserEmail;
+    private EditText loginUserPassword;
     private Button buttonLogin;
     private InputValidator validator;
 
@@ -28,12 +31,12 @@ public class LoginActivity extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         validator = new InputValidator();
 
-        editTextUserEmail = findViewById(R.id.edit_text_login_email);
-        editTextUserPassword = findViewById(R.id.edit_text_login_password);
+        loginUserEmail = findViewById(R.id.edit_text_login_email);
+        loginUserPassword = findViewById(R.id.edit_text_login_password);
         buttonLogin = findViewById(R.id.button_login);
 
-        editTextUserEmail.addTextChangedListener(loginTextWatcher);
-        editTextUserPassword.addTextChangedListener(loginTextWatcher);
+        loginUserEmail.addTextChangedListener(loginTextWatcher);
+        loginUserPassword.addTextChangedListener(loginTextWatcher);
     }
 
     private final TextWatcher loginTextWatcher = new TextWatcher() {
@@ -44,8 +47,8 @@ public class LoginActivity extends AppCompatActivity {
 
         @Override
         public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-            String emailInput = editTextUserEmail.getText().toString().trim();
-            String passwordInput = editTextUserPassword.getText().toString().trim();
+            String emailInput = loginUserEmail.getText().toString().trim();
+            String passwordInput = loginUserPassword.getText().toString().trim();
             buttonLogin.setEnabled(!emailInput.isEmpty() && !passwordInput.isEmpty());
         }
 
@@ -54,24 +57,36 @@ public class LoginActivity extends AppCompatActivity {
         }
     };
 
-    public void button_signupForm(View view) {
+    public void button_JoinSignupForm(View view) {
         startActivity(new Intent(getApplicationContext(), SignUpActivity.class));
     }
 
     public void button_login(View view) {
-        String enteredEmail = editTextUserEmail.getText().toString();
-        String enteredPassword = editTextUserPassword.getText().toString();
+       String enteredEmail = loginUserEmail.getText().toString();
+       String enteredPassword = loginUserPassword.getText().toString();
 
         boolean isEmailValid = validator.validateEnteredEmail(enteredEmail);
         boolean isPasswordValid = validator.validateEnteredPassword(enteredPassword);
 
         if (isEmailValid && isPasswordValid) {
-            String input = "Email: " + editTextUserEmail.getEditableText().toString();
-            input += "\n";
-            input += "\n";
-            input += "Password: " + editTextUserPassword.getEditableText().toString();
-
-            Toast.makeText(this, input, Toast.LENGTH_SHORT).show();
+            UserDatabase userDatabase = UserDatabase.getUserDatabase(getApplicationContext());
+           final UserDao userDao = userDatabase.userDao();
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    UserEntity userEntity= userDao.login(enteredEmail,enteredPassword);
+                    if (userEntity == null){
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                Toast.makeText(getApplicationContext(), "Invalid Credentials", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    } else{
+                        startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                    }
+                }
+            }).start();
         } else {
             String error = "An error occurred, please check email and/or password";
             Toast.makeText(this, error, Toast.LENGTH_SHORT).show();
