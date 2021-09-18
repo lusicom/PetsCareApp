@@ -5,15 +5,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="30dp"
+    android:padding="20dp"
     tools:context=".activities.LoginActivity">
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="250dp"
+        android:contentDescription="@string/content_description_logo"
         android:padding="30dp"
-        android:src="@drawable/logo_launch_screen"
-        android:contentDescription="@string/content_description_logo" />
+        android:src="@drawable/logo_launch_screen" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
@@ -80,38 +80,14 @@
 
         <Button
             android:id="@+id/button_signupForm"
+            style="?android:attr/borderlessButtonStyle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="?android:attr/borderlessButtonStyle"
             android:onClick="button_signupForm"
             android:text="@string/button_signup"
-            android:textSize="20dp"
             android:textAllCaps="false"
-            android:textColor="@color/dark_blue" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="30dp"
-        android:gravity="center">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="or continue with"
+            android:textColor="@color/dark_blue"
             android:textSize="20dp" />
-
-        <ImageButton
-            android:id="@+id/img_button_google_login"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            style="?android:attr/borderlessButtonStyle"
-            android:src="@drawable/btn_google_light_normal_hdpi"
-            android:onClick="img_btn_google_login"/>
-
     </LinearLayout>
-
 
 </LinearLayout>
