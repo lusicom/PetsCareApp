@@ -1,10 +1,8 @@
 package com.example.petscareapp.validator;
 
-import android.util.Patterns;
-
 import java.util.regex.Pattern;
 
-public class BaseValidator {
+public class InputValidator {
 
     private static final Pattern PASSWORD_PATTERN =
             Pattern.compile("^" +
@@ -15,14 +13,7 @@ public class BaseValidator {
                     "$");
 
     public static final Pattern EMAIL_ADDRESS_PATTERN = Pattern.compile(
-            "[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}" +
-                    "\\@" +
-                    "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}" +
-                    "(" +
-                    "\\." +
-                    "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25}" +
-                    ")+");
-
+            "^[a-zA-Z0-9_!#$%&’*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$");
 
     public boolean validateEnteredPassword(String passwordEntered) {
         if (passwordEntered.isEmpty()) {
@@ -40,7 +31,6 @@ public class BaseValidator {
         if (emailEntered.isEmpty()) {
             return false;
         } else return EMAIL_ADDRESS_PATTERN.matcher(emailEntered).matches();
-
     }
 }
 
