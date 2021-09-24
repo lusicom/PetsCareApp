@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">PetsCare app</string>
+    <string name="content_description_logo">Image with logo app</string>
+    <string name="login_hint_email">Email</string>
+    <string name="login_hint_password">Password</string>
+    <string name="button_login">Log in</string>
+    <string name="don_t_have_an_account">Don\'t have an account</string>
+    <string name="button_signup">Sign up!</string>
+    <string name="sign_up_button">Sign Up</string>
+    <string name="button_specialist_services"><![CDATA[Specialists & Services]]></string>
+    <string name="button_pet_owner">Pet Owner</string>
+    <string name="select_type_of_user">Type of user:</string>
+    <string name="confirm_password_signup">Confirm Password</string>
+    <string name="password_signup">Password</string>
+    <string name="email_signup">Email</string>
+    <string name="user_name_signup">User Name</string>
+    <string name="full_name_signup">Full Name</string>
+    <string name="fill_in_this_form">Please fill in this form to create an account!</string>
+    <string name="signup_title">SignUp</string>
+</resources>
