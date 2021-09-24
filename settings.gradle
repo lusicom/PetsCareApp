@@ -1,4 +1,2 @@
-include ':domain'
-include ':data'
-include ':presentation'
-rootProject.name = "PetsCare App"
+include ':app'
+rootProject.name = "PetsCare app"
